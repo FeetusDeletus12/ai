@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #chat-box {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e1f5fe;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #d1c4e9;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-box">
+        <h2>Gemini AI Chatbot</h2>
+        <div id="conversation">
+            {% if conversation %}
+                <div class="message user-message">{{ conversation[0] }}</div>
+                <div class="message">{{ conversation[1] }}</div>
+            {% endif %}
+        </div>
+
+        <form method="POST" action="/chat">
+            <input type="text" name="user_input" placeholder="Type a message..." required style="width: 80%; padding: 10px;">
+            <button type="submit" style="padding: 10px;">Send</button>
+        </form>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
